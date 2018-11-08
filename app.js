@@ -26,15 +26,29 @@ var connection = mysql.createConnection({
 //   });
 
 
+//UNSERTING DATA TAKE 2
+// var post  = {email: faker.internet.email()};
+// var query = connection.query('INSERT INTO users SET ?', post, function (error, results, fields) {
+//   if (error) throw error;
+//   console.log(results);
+// });
 
 
-
-var post  = {email: faker.internet.email()};
-var query = connection.query('INSERT INTO users SET ?', post, function (error, results, fields) {
-  if (error) throw error;
-  console.log(results);
+//INSERT ALOT OF DATA
+var data = [];
+for(var i = 0; i < 500; i++){
+    data.push([
+        faker.internet.email(),
+        faker.date.past()
+    ]);
+}
+ 
+var q = 'INSERT INTO users (email, created_at) VALUES ?';
+ 
+connection.query(q, [data], function(err, result) {
+  console.log(err);
+  console.log(result);
 });
-
 
   connection.end();
 
