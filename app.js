@@ -50,7 +50,7 @@ connection.query(q, [data], function(err, result) {
   console.log(result);
 });
 
-  connection.end();
+connection.end();
 
 // function generateAdress(){
 //     console.log(faker.address.streetAddress());
